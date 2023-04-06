@@ -1,8 +1,9 @@
 
 use colored::*;
+use std::rc::Rc;
 
 pub enum List<T> {
-    Cons(T, Box<List<T>>),
+    Cons(T, Rc<List<T>>),
     Nil,
 }
 
@@ -13,6 +14,8 @@ fn add(x: i32, y: i32) -> i32 {
 #[derive(Debug)]
 pub struct MyBox<T>(T);
 
+
+//Created our own Box<T> to implement Deref and test how the functionality would work. 
 impl<T> MyBox<T> {
     pub fn new(x: T) -> MyBox<T> {
         MyBox(x)
